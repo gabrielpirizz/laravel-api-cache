@@ -7,9 +7,6 @@ use Illuminate\Support\Str;
 
 class ProductObserver
 {
-    /**
-     * Handle the Product "created" event.
-     */
     public function creating(Product $product): void
     {
         $product->uuid = (string)Str::uuid();

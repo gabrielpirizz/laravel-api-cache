@@ -18,12 +18,8 @@ class ProductService
         return $this->productRepository->getAllProducts();
     }
 
-    //colocar aqui métodos para buscar produtos por ID, criar, atualizar e deletar produtos
-
     public function createNewProduct(array $data)
     {
         return $this->productRepository->createNewProduct($data);
     }
-
-    // Additional methods for creating, updating, and deleting products can be added here
 }
