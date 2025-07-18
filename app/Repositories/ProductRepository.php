@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories;
+
 use App\Models\Product;
 
 class ProductRepository
@@ -15,7 +16,6 @@ class ProductRepository
     public function getAllProducts()
     {
         return $this->entity->all();
-//        return $this->entity::get();
     }
 
     public function createNewProduct(array $data)
@@ -23,32 +23,15 @@ class ProductRepository
         return $this->entity->create($data);
     }
 
-//    public function findProductById($id)
-//    {
-//        return $this->entity::find($id);
-//    }
-//
-//    public function createProduct(array $data)
-//    {
-//        return $this->entity::create($data);
-//    }
-//
-//    public function updateProduct($id, array $data)
-//    {
-//        $product = $this->findProductById($id);
-//        if ($product) {
-//            $product->update($data);
-//            return $product;
-//        }
-//        return null;
-//    }
-//
-//    public function deleteProduct($id)
-//    {
-//        $product = $this->findProductById($id);
-//        if ($product) {
-//            return $product->delete();
-//        }
-//        return false;
-//    }
+    public function getProductByUuid($identify)
+    {
+        return $this->entity::where('uuid', $identify)->firstOrFail();
+    }
+
+    public function deleteProductByUuid(string $identify)
+    {
+        $product = $this->getProductByUuid($identify);
+
+        return $product->delete();
+    }
 }

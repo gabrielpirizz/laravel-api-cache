@@ -20,6 +20,8 @@ use App\Http\Controllers\Api\{
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'index']);
     Route::post('/store', [ProductController::class, 'store']);
+    Route::get('/show/{identify}', [ProductController::class, 'show']);
+    Route::delete('/{identify}', [ProductController::class, 'destroy']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

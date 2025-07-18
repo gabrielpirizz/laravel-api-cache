@@ -18,8 +18,18 @@ class ProductService
         return $this->productRepository->getAllProducts();
     }
 
+    public function getProduct(string $identify)
+    {
+        return $this->productRepository->getProductByUuid($identify);
+    }
+
     public function createNewProduct(array $data)
     {
         return $this->productRepository->createNewProduct($data);
+    }
+
+    public function deleteProduct(string $identify)
+    {
+        return $this->productRepository->deleteProductByUuid($identify);
     }
 }
