@@ -21,9 +21,11 @@ class StoreUpdateProduct extends FormRequest
      */
     public function rules(): array
     {
+        $uuid = $this->route('identify');
+
         return [
-            'name' => 'required|string|min:3|max:255|unique:products',
-            'description' => 'nullable|string|min:3|max:1000',
+            'name' => ['required', 'min:3', 'max:255', "unique:products,name,{$uuid},uuid"],
+            'description' => ['nullable', 'min:3', 'max:9999'],
         ];
     }
 }

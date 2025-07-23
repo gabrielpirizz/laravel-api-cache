@@ -34,6 +34,7 @@ class ProductController extends Controller
     public function store(StoreUpdateProduct $request)
     {
         $product = $this->productService->createNewProduct($request->validated());
+
         return new ProductResource($product);
     }
 
@@ -43,15 +44,18 @@ class ProductController extends Controller
     public function show(string $identify)
     {
         $product = $this->productService->getProduct($identify);
+
         return new ProductResource($product);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreUpdateProduct $request, string $identify)
     {
-        //
+        $this->productService->updateProduct($identify, $request->validated());
+
+        return response()->json(['message' => 'Product updated successfully.'], 200);
     }
 
     /**

@@ -32,4 +32,9 @@ class ProductService
     {
         return $this->productRepository->deleteProductByUuid($identify);
     }
+
+    public function updateProduct(string $identify, array $data)
+    {
+        return $this->productRepository->updateProductByUuid($identify, $data);
+    }
 }

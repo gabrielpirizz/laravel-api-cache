@@ -34,4 +34,11 @@ class ProductRepository
 
         return $product->delete();
     }
+
+    public function updateProductByUuid(string $identify, array $data)
+    {
+        $product = $this->getProductByUuid($identify);
+
+        return $product->update($data);
+    }
 }
