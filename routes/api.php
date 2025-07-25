@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\{
-    ProductController
+    ProductController,
+    CategoryController
 };
 
 /*
@@ -16,6 +17,10 @@ use App\Http\Controllers\Api\{
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+route::apiResource('categories', CategoryController::class)
+    ->only(['index', 'store', 'show', 'destroy', 'update'])
+    ->parameters(['categories' => 'identify']);
 
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductController::class, 'index']);
